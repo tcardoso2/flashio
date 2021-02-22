@@ -16,13 +16,15 @@ amqp.connect('amqp://user:password@localhost', function(error0, connection) {
     channel.assertQueue(queue, {
       durable: false
     });
-
-    channel.sendToQueue(queue, Buffer.from(msg));
-    console.log(" [x] Sent %s", msg);
+    for (let i=0; i < 5000; i++){
+      channel.sendToQueue(queue, Buffer.from(`${msg}_${i}`));
+      console.log(` [x] Sent ${msg}_${i}`);
+    }
   });
 
   setTimeout(function() {
     connection.close();
+    console.log('Closed connection');
     process.exit(0)
-  }, 50);
+  }, 8000);
 });

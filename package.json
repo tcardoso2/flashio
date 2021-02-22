@@ -9,6 +9,7 @@
   "author": "Tiago Cardoso",
   "license": "ISC",
   "dependencies": {
-    "amqplib": "^0.7.0"
+    "amqplib": "^0.7.0",
+    "redis": "^3.0.2"
   }
 }
